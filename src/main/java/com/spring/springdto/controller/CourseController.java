@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.springdto.model.Course;
+import com.spring.springdto.model.CourseDTO;
 import com.spring.springdto.service.CourseService;
 
 @RestController
@@ -18,7 +19,7 @@ public class CourseController {
     private CourseService courseService;
 
     @GetMapping("/allCourses")
-    public List<Course> getAllCourses(){
+    public List<CourseDTO> getAllCourses(){
         return courseService.getCourses();
     }
 }
