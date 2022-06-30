@@ -45,4 +45,12 @@ public class Student {
     public void setAge(String age) {
         this.age = age;
     }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
 }

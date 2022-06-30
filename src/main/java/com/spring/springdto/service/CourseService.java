@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.springdto.model.Course;
 import com.spring.springdto.model.CourseDTO;
+import com.spring.springdto.model.Student;
 import com.spring.springdto.repo.CourseRepo;
 
 @Service
@@ -27,5 +28,8 @@ public class CourseService {
             courseDTOS.add(courseDTO);
         }
         return courseDTOS;
+    }
+    public List<Course> getCoursesAfterR(){
+       return courseRepo.findAll();
     }
 }

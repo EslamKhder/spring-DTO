@@ -22,4 +22,9 @@ public class CourseController {
     public List<CourseDTO> getAllCourses(){
         return courseService.getCourses();
     }
+
+    @GetMapping("/allCoursesR")
+    public List<Course> getAllCoursesAfterR(){
+        return courseService.getCoursesAfterR();
+    }
 }

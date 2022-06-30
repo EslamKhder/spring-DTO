@@ -33,6 +33,10 @@ public class StudentService {
         }
         return studentDTOS;
     }
+
+    public List<Student> getStudentsAfterR(){
+        return studentRepo.findAll();
+    }
     public StudentResponse getStudent(Long id){
         Student student = studentRepo.findById(id).get();
         StudentResponse studentResponse = new StudentResponse();

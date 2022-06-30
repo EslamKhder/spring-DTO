@@ -24,9 +24,15 @@ public class StudentController {
         return studentService.getStudents();
     }
 
+    @GetMapping("/allStudentR")
+    public List<Student> getAllStudentsAfterR(){
+        return studentService.getStudentsAfterR();
+    }
+
     // http://localhost:8080/student/getStudent?id_student=1
     @GetMapping("/getStudent")
     public StudentResponse getStudent(@RequestParam("id_student") Long id){
         return studentService.getStudent(id);
     }
+
 }

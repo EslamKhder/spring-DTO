@@ -52,4 +52,12 @@ public class Course {
     public void setTime(String time) {
         this.time = time;
     }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 }
