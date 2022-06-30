@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.springdto.model.Student;
@@ -20,5 +21,11 @@ public class StudentController {
     @GetMapping("/allStudent")
     public List<StudentDTO> getAllStudents(){
         return studentService.getStudents();
+    }
+
+    // http://localhost:8080/student/getStudent?id_student=1
+    @GetMapping("/getStudent")
+    public Student getStudent(@RequestParam("id_student") Long id){
+        return studentService.getStudent(id);
     }
 }
