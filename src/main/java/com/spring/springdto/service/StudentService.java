@@ -7,7 +7,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.springdto.model.Student;
 import com.spring.springdto.model.StudentDTO;
 import com.spring.springdto.model.StudentResponse;
@@ -36,7 +35,10 @@ public class StudentService {
     }
     public StudentResponse getStudent(Long id){
         Student student = studentRepo.findById(id).get();
-        StudentResponse studentResponse = modelMapper.map(student,StudentResponse.class);
+        StudentResponse studentResponse = new StudentResponse();
+        studentResponse.setPhone("01113903660");
+        //studentResponse = modelMapper.map(student,StudentResponse.class);
+        modelMapper.map(student,studentResponse);
         return studentResponse;
     }
 }
