@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.springdto.model.Student;
 import com.spring.springdto.model.StudentDTO;
+import com.spring.springdto.model.StudentResponse;
 import com.spring.springdto.repo.StudentRepo;
 
 @Service
@@ -28,7 +29,10 @@ public class StudentService {
         }
         return studentDTOS;
     }
-    public Student getStudent(Long id){
-        return studentRepo.findById(id).get();
+    public StudentResponse getStudent(Long id){
+        Student student = studentRepo.findById(id).get();
+        StudentResponse studentResponse = new StudentResponse();
+        studentResponse.setName(student.getName());
+        return studentResponse;
     }
 }
