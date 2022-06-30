@@ -1,7 +1,10 @@
 package com.spring.springdto.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Course {
@@ -13,6 +16,10 @@ public class Course {
     private String cost;
 
     private String time;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
+    private Student student;
 
     public Long getId() {
         return id;
