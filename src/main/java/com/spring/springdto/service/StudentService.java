@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.springdto.model.Course;
+import com.spring.springdto.model.CourseResponse;
 import com.spring.springdto.model.Student;
 import com.spring.springdto.model.StudentDTO;
 import com.spring.springdto.model.StudentPositionDto;
@@ -58,6 +60,14 @@ public class StudentService {
         Student student = courseRepo.findStudentByCourseID(ids.get(0));
         studentPositionDto.setId(student.getId());
         studentPositionDto.setName(student.getName());
+
+        List<Course> courses = courseRepo.listCoursesInIds(ids);
+        for(int i=0;i<courses.size();i++){
+            CourseResponse courseResponse = new CourseResponse();
+            courseResponse.setId(courses.get(i).getId());
+            courseResponse.setCost(courses.get(i).getCost());
+            studentPositionDto.getCourses().add(courseResponse);
+        }
         return studentPositionDto;
     }
 }
