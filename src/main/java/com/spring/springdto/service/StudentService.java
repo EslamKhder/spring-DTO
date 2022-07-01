@@ -56,18 +56,20 @@ public class StudentService {
     public StudentPositionDto getStudentCourses(List<Long> ids) {
         // 0 1 2
         // 1 3 5
-        StudentPositionDto studentPositionDto = new StudentPositionDto();
-        Student student = courseRepo.findStudentByCourseID(ids.get(0));
-        studentPositionDto.setId(student.getId());
-        studentPositionDto.setName(student.getName());
+        StudentPositionDto studentPositionDto = modelMapper.map(
+                courseRepo.findStudentByCourseID(ids.get(0)),StudentPositionDto.class);
 
-        List<Course> courses = courseRepo.listCoursesInIds(ids);
+        /*Student student = courseRepo.findStudentByCourseID(ids.get(0));
+        studentPositionDto.setId(student.getId());
+        studentPositionDto.setName(student.getName());*/
+
+        /*List<Course> courses = courseRepo.listCoursesInIds(ids);
         for(int i=0;i<courses.size();i++){
-            CourseResponse courseResponse = new CourseResponse();
-            courseResponse.setId(courses.get(i).getId());
+            CourseResponse courseResponse = modelMapper.map(courses.get(i),CourseResponse.class);
+            /*courseResponse.setId(courses.get(i).getId());
             courseResponse.setCost(courses.get(i).getCost());
             studentPositionDto.getCourses().add(courseResponse);
-        }
+        }*/
         return studentPositionDto;
     }
 }
