@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Student {
 
@@ -17,6 +19,7 @@ public class Student {
 
     private String age;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "student")
     private List<Course> courses;
 
