@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.springdto.model.Student;
 import com.spring.springdto.model.StudentDTO;
+import com.spring.springdto.model.StudentPositionDto;
 import com.spring.springdto.model.StudentResponse;
 import com.spring.springdto.service.StudentService;
 
@@ -33,6 +34,11 @@ public class StudentController {
     @GetMapping("/getStudent")
     public StudentResponse getStudent(@RequestParam("id_student") Long id){
         return studentService.getStudent(id);
+    }
+
+    @GetMapping("/student-course")
+    public StudentPositionDto getStudentCourses(@RequestParam("courses_id_list") List<Long> ids){
+        return studentService.getStudentCourses(ids);
     }
 
 }

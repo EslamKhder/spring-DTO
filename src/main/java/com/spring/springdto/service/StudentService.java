@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.spring.springdto.model.Student;
 import com.spring.springdto.model.StudentDTO;
+import com.spring.springdto.model.StudentPositionDto;
 import com.spring.springdto.model.StudentResponse;
+import com.spring.springdto.repo.CourseRepo;
 import com.spring.springdto.repo.StudentRepo;
 
 @Service
@@ -20,6 +22,9 @@ public class StudentService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private CourseRepo courseRepo;
 
     public List<StudentDTO> getStudents(){
         List<Student> students = studentRepo.findAll();
@@ -44,5 +49,15 @@ public class StudentService {
         //studentResponse = modelMapper.map(student,StudentResponse.class);
         modelMapper.map(student,studentResponse);
         return studentResponse;
+    }
+
+    public StudentPositionDto getStudentCourses(List<Long> ids) {
+        // 0 1 2
+        // 1 3 5
+        StudentPositionDto studentPositionDto = new StudentPositionDto();
+        Student student = courseRepo.findStudentByCourseID(ids.get(0));
+        studentPositionDto.setId(student.getId());
+        studentPositionDto.setName(student.getName());
+        return studentPositionDto;
     }
 }
